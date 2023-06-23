@@ -156,7 +156,7 @@ function App() {
                   )
                 }
               />
-              <Route path="page/test/:pageId" element={<PageManagement />} />
+              <Route path="page/test/:pageId?" element={<PageManagement />} />
               <Route
                 path="admin"
                 element={
