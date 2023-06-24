@@ -213,3 +213,14 @@ select{
 .added-blocks-title{
   margin-bottom: 2rem;
 }
+.detail-btn{
+  background-color: #ff9517;
+    border: 1px solid #ff9517;
+    color: #00002c;
+}
+.detail-btn:hover{
+  background-color: #ff9517;
+    border: 1px solid #ff9517;
+    color: #00002c;
+    font-weight: 600;
+}

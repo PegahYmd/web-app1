@@ -51,7 +51,7 @@ function PageRow(props) {
     return (
       <Col
         lg={3}
-        onClick={() => navigate(`/page/details/${props.pageData.id}`)}
+        
       >
         <div className="page-boxes">
           <p className="page-title">{props.pageData.title}</p>
@@ -62,8 +62,8 @@ function PageRow(props) {
           </p>
           <p>Status: {publish_Status}</p>
           <Row className="btns-area">
-            <Col lg={8}></Col>
-            <Col lg={4}>
+            <Col lg={6}></Col>
+            <Col lg={6}>
               <Link
                 className="btn btn-primary action-btns"
                 to={"/form/" + props.pageData.id}
@@ -78,6 +78,12 @@ function PageRow(props) {
               >
                 <i className="bi bi-trash" />
               </Button>
+              <Button
+                className="detail-btn"
+                onClick={() => navigate(`/page/details/${props.pageData.id}`)}
+              >
+                More<i className="bi bi-arrow-right" />
+              </Button>
             </Col>
           </Row>
         </div>
@@ -87,7 +93,7 @@ function PageRow(props) {
     return (
       <Col
         lg={3}
-        onClick={() => navigate(`/page/details/${props.pageData.id}`)}
+        
       >
         <div className="page-boxes">
           <p className="page-title">{props.pageData.title}</p>
@@ -98,8 +104,8 @@ function PageRow(props) {
           </p>
           <p>Status: {publish_Status}</p>
           <Row className="btns-area">
-            <Col lg={8}></Col>
-            <Col lg={4}>
+            <Col lg={6}></Col>
+            <Col lg={6}>
               <Link
                 className="btn btn-primary action-btns"
                 to={"form/" + props.pageData.id}
@@ -113,6 +119,12 @@ function PageRow(props) {
                 onClick={() => props.deletePage(props.pageData.id)}
               >
                 <i className="bi bi-trash" />
+              </Button>
+              <Button
+                className="detail-btn"
+                onClick={() => navigate(`/page/details/${props.pageData.id}`)}
+              >
+                More<i className="bi bi-arrow-right" />
               </Button>
             </Col>
           </Row>
