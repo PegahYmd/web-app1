@@ -290,7 +290,7 @@ const PageManagement = () => {
                     {images.map((image) => (
                       <Image
                         src={image.src}
-                        style={{ width: "40px" }}
+                        style={{ width: "100px", margin: "5px" }}
                         alt={image.title}
                         onClick={() => onBlockValueChangedHandler(index, image)}
                       />

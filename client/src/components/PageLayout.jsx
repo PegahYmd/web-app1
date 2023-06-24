@@ -74,8 +74,16 @@ function AdminLayout(props) {
   return (
     <>
       <h1 className="pb-3">All Pages:</h1>
-      <PageTable Pages={props.Pages} deletePage={deletePage} updatePages={updatePage} editable={true}/>
-      <Link className="btn btn-primary btn-lg fixed-right-bottom" to="/add" state={{nextpage: location.pathname}}> &#43; </Link>
+      <PageTable 
+      Pages={props.Pages} 
+      deletePage={deletePage} 
+      updatePages={updatePage} 
+      editable={true}/>
+
+      <Link 
+      className="btn btn-primary btn-lg fixed-right-bottom" 
+      to="/add" 
+      state={{nextpage: location.pathname}}> &#43; </Link>
     </>
   )
 }

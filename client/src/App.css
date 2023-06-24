@@ -1,8 +1,20 @@
+/* @import "@font/nunito"; */
+
+
 /*
  * [2022/2023]
  * 01UDFOV Applicazioni Web I / 01TXYOV Web Applications I
  * Lab 10
  */
+
+
+ body {
+  /* font-family: var(--fontFamily-nunito); */
+  font-family: 'Nunito', sans-serif;
+}
+p{
+  margin-bottom: 5px;
+}
 
 /* Global */
 .vheight-100 {
@@ -108,6 +120,28 @@ small.watch-date {
 .header-plus{
   margin-right: 5px;
 }
-/* .form-control{
-  color:#c0c0c0;
-} */
+.links-wid{
+  width: 350px;
+}
+.page-boxes{
+  border: 1px solid #f0f0f0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  border-radius: 10px;
+  margin-right: 20px;
+  padding: 10px 10px;
+}
+.page-title{
+  font-weight: bold;
+}
+.action-btns{
+  padding: 7px;
+  line-height: 5px;
+}
+.btns-area{
+  text-align: right;
+  margin-top: 2rem;
+}
+.btns-area .action-btns{
+  margin-right: 5px;
+}

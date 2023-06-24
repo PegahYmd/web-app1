@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-import { Navbar, Nav, Form } from 'react-bootstrap';
+import { Navbar, Nav, Form, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LogoutButton, LoginButton } from './Auth';
 
@@ -23,15 +23,25 @@ const Navigation = (props) => {
       </Form> */}
       
         <Nav.Item>
-          <Nav.Link href="#">
-            <Link to={"/admin"} state={{nextpage: location.pathname}}>
-              <p>admin pages</p>
+          <Container className='links-wid'>
+            <Row>
+              <Col lg={6}>
+                <Nav.Link href="#">
+                  <Link to={"/admin"} state={{nextpage: location.pathname}}>
+                    <p>admin pages</p>
+                  </Link>
+                </Nav.Link>
+             </Col>
+            <Col lg={6}>
+              <Link to={"/page/" + 1} state={{nextpage: location.pathname}}>
+                <p>regular user pages</p>
               </Link>
-            </Nav.Link>
+            </Col>
+            </Row>
+          </Container>
+          
 
-            <Link to={"/page/" + 1} state={{nextpage: location.pathname}}>
-            <p>regular user pages</p>
-            </Link>
+            
             
         </Nav.Item>
         <Nav className="ml-md-auto">

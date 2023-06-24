@@ -68,7 +68,7 @@ exports.createPage = (page) => {
 
     const sql =
       "INSERT INTO Pages (title, user, author, creation_date, publication_date, blocks) VALUES(?, ?, ?, ?, ?, ?)";
-    db.run("DELETE from Pages");
+    // db.run("DELETE from Pages");
     db.run(
       sql,
       [
