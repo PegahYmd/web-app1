@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import getPublicationStatus from "./getPublicationStatus.js";
 
 const SERVER_URL = "http://localhost:3001/api/";
 
@@ -47,6 +48,7 @@ const getPages = async () => {
           publication_date: page.publication_date,
           image: page.image,
           user: page.user,
+          publicationStatus: getPublicationStatus(page.publication_date),
         };
         if (page.creation_date)
           clientPage.creation_date = dayjs(page.creation_date);
@@ -68,11 +70,8 @@ const getPagesFiltered = async (filterId) => {
         id: page.id,
         title: page.title,
         author: page.author,
-        paragraph: page.paragraph,
-        header: page.header,
-        header2: page.header2,
         creation_date: page.creation_date,
-        publication_date: page.publication_date,
+        publicationDate: page.publication_date,
         image: page.image,
         user: page.user,
       };
@@ -181,7 +180,6 @@ const logOut = async () => {
   );
 };
 
-
 function addTitle(page) {
   return getJson(
     fetch(SERVER_URL + "pages/", {
@@ -207,7 +205,6 @@ function editTitle(page) {
     })
   );
 }
-
 
 const API = {
   getPages,

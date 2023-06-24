@@ -24,6 +24,7 @@ import API from "./API";
 import PageManagement from "./components/PageManagement.jsx";
 import DetailPage from "./components/DetailPage";
 import PageForm from "./components/PageForm";
+import AllPages from "./components/AllPages.jsx";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -111,17 +112,8 @@ function App() {
         <Container fluid className="App">
           <Navigation logout={handleLogout} user={user} loggedIn={loggedIn} />
           <Routes>
-            <Route
-              path="/"
-              element={
-                loading ? (
-                  <LoadingLayout />
-                ) : (
-                  <DefaultLayout pages={pages} pagesFiltered={pagesFiltered} />
-                )
-              }
-            >
-              <Route
+            <Route path="/" element={<AllPages user={user} />}>
+              {/* <Route
                 index
                 element={
                   loggedIn ? (
@@ -140,7 +132,7 @@ function App() {
                     />
                   )
                 }
-              />
+              />*/}
               <Route
                 path="page/:filterId"
                 element={
