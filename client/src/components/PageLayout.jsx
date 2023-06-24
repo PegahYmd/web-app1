@@ -73,7 +73,7 @@ function AdminLayout(props) {
 
   return (
     <>
-      <h1 className="pb-3">All Pages:</h1>
+      <h4 className="all-title">All Pages:</h4>
       <PageTable 
       Pages={props.Pages} 
       deletePage={deletePage} 
@@ -82,8 +82,8 @@ function AdminLayout(props) {
 
       <Link 
       className="btn btn-primary btn-lg fixed-right-bottom" 
-      to="/add" 
-      state={{nextpage: location.pathname}}> &#43; </Link>
+      to="/form"
+      state={{nextpage: location.pathname}}> Create New Page </Link>
     </>
   )
 }
@@ -144,16 +144,16 @@ function BackOfficeLayout(props) {
 
   return (
     <>
-      <h1 className="pb-3">Authored Pages:</h1>
+      <h4 className="all-title">Authored Pages:</h4>
       <PageTable Pages={props.pagesFiltered} deletePage={deletePage} updatePages={updatePage} editable={true}/>
 
       <br/>
       <br/>
       <br/>
 
-      <h1 className="pb-3">Other Pages:</h1>
+      <h4 className="all-title">Other Pages:</h4>
       <PageTable Pages={props.Pages} deletePage={deletePage} updatePages={updatePage} editable={false} />
-      <Link className="btn btn-primary btn-lg fixed-right-bottom" to="/add" state={{nextpage: location.pathname}}> &#43; </Link>
+      <Link className="btn btn-primary btn-lg fixed-right-bottom" to="/form" state={{nextpage: location.pathname}}>Create New Page</Link>
     </>
   )
 }
@@ -205,7 +205,7 @@ function FrontOfficeLayout(props) {
 
   return (
     <>
-      <h1 className="pb-3">All Pages:</h1>
+      <h4 className="all-title">All Pages:</h4>
       <PageTable Pages={props.Pages} deletePage={deletePage} updatePages={updatePage} editable={false}/>
     </>
   )

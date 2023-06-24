@@ -22,6 +22,7 @@ import {
 import MessageContext from "./messageCtx";
 import API from "./API";
 import PageManagement from "./components/PageManagement.jsx";
+import DetailPage from "./components/DetailPage";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -156,7 +157,8 @@ function App() {
                   )
                 }
               />
-              <Route path="page/test/:pageId?" element={<PageManagement />} />
+              <Route path="form" element={<PageManagement />} />
+              <Route path="detail" element={<DetailPage />} />
               <Route
                 path="admin"
                 element={

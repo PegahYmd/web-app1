@@ -23,10 +23,19 @@ p{
 
 /* Styles related to NavBar */
 .navbar-padding {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
+  background-color:#00002c;
 }
-
+.navbar-brand{
+  font-weight: 600;
+  font-size: 30px;
+}
+.links-wid a{
+  color: #fff;
+}
+a{
+  text-decoration:none
+}
 .below-nav {
   padding-top: 5rem;
 }
@@ -95,7 +104,18 @@ small.watch-date {
   bottom: 0;
   z-index: 1030;
   margin: 0 1.5rem 1.5rem 0;
-  border-radius: 50%;
+  padding: 15px 20px;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #ff9517;
+    border-color: #ff9517;
+    color: #00002c;
+}
+
+.fixed-right-bottom:hover{
+  background-color: #ff9517;
+  border-color: #ff9517;
+  color: #00002c;
 }
 
 /* Adding padding to form */
@@ -104,9 +124,7 @@ small.watch-date {
   width: 50%;
   margin: 0 auto;
 }
-.nav-item a{
-  color: #000;
-}
+
 .images-div img{
   width: 130px;
   height: 100%;
@@ -128,8 +146,9 @@ small.watch-date {
   background-color: white;
   box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
   border-radius: 10px;
-  margin-right: 20px;
+  margin-right: 5px;
   padding: 10px 10px;
+  margin-bottom: 20px;
 }
 .page-title{
   font-weight: bold;
@@ -144,4 +163,53 @@ small.watch-date {
 }
 .btns-area .action-btns{
   margin-right: 5px;
+}
+.image-selection{
+  display: inline;
+}
+.submit-form{
+  float: right;
+    padding: 15px 20px;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #ff9517;
+    border-color: #ff9517;
+    color: #00002c;
+}
+.submit-form:hover{
+  background-color: #ff9517;
+  border-color: #ff9517;
+  color: #00002c;
+}
+.all-title{
+  font-weight: 700;
+  margin: 40px 10px;
+  font-size: 31px;
+  text-align: center;
+}
+.block-adder h4{
+  margin-right: 10px;
+}
+#formGridState{
+  width: 300px;
+  margin-right: 1rem;
+  border-color: #aeaeae;
+}
+select{
+  border-color: #aeaeae;
+}
+.add-block-btn{
+  background-color: #00002c;
+  border-color: #00002c;
+}
+.add-block-btn:hover{
+  background-color: #00002c;
+  border-color: #00002c;
+}
+.add-block-btn:disabled{
+  background-color: #00002c;
+  border-color: #00002c;
+}
+.added-blocks-title{
+  margin-bottom: 2rem;
 }

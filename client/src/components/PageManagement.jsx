@@ -185,7 +185,7 @@ const PageManagement = () => {
 
   return (
     <form className="container mt-5 mb-3">
-      <Row className="mb-3">
+      <Row className="mb-5">
         <Form.Group className="col col-sm-4">
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -221,11 +221,11 @@ const PageManagement = () => {
         </Form.Group>
       </Row>
 
-      <hr />
-      <div className="d-flex justify-content-between align-items-center pt-3 pb-3">
-        <h3>Blocks</h3>
+      {/* <hr /> */}
+      <div className="block-adder d-flex pt-3 pb-3">
+        <h4>Choose the block you want to add in the page </h4>
 
-        <Form.Group controlId="formGridState" className="col col-sm-6">
+        <Form.Group controlId="formGridState">
           <Form.Select
             className="form-control"
             value={selectedBlockType}
@@ -239,6 +239,7 @@ const PageManagement = () => {
         </Form.Group>
 
         <Button
+          className="add-block-btn"
           variant="success"
           disabled={!selectedBlockType}
           onClick={onAddHandler}
@@ -283,7 +284,7 @@ const PageManagement = () => {
                       block.value ? (
                         <Image src={block.value.src} style={{ width: 100 }} />
                       ) : (
-                        <p>choose an image ...</p>
+                        <p className="image-selection">Select an image </p>
                       )
                     }
                   >
@@ -317,7 +318,7 @@ const PageManagement = () => {
         );
       })}
 
-      <Button onClick={onSubmitHandler} disabled={submitLoading}>
+      <Button className="submit-form" onClick={onSubmitHandler} disabled={submitLoading}>
         {submitLoading ? "Please Wait ..." : "Submit"}
       </Button>
     </form>
