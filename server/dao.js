@@ -104,7 +104,7 @@ exports.updatePage = (id, page) => {
         page.user,
         page.title,
         page.author,
-        page.publication_date,
+        page.publicationDate,
         page.blocks,
         id,
       ],

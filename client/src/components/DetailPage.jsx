@@ -1,66 +1,62 @@
-
 import { useEffect, useState } from "react";
-import "dayjs";
 
-import { Table, Form, Button, Container, Row, Col } from "react-bootstrap";
-import { Link, useLocation, Navigate } from "react-router-dom";
+import { Table, Form, Button, Container, Row, Col, Nav } from "react-bootstrap";
+import { Link, useLocation, Navigate, useParams } from "react-router-dom";
+import API from "../API.js";
+import dayjs from "dayjs";
+import getPublicationStatus from "../getPublicationStatus.js";
 
+function DetailPage() {
+  const { pageId } = useParams();
+  const [detail, setDetail] = useState(null);
 
+  useEffect(() => {
+    API.getPage(pageId).then((page) => {
+      setDetail(page);
+    });
+  }, []);
 
-function DetailPage(props) {
-    const filteredPages = props.Pages;
-  
-    // return (
-  
-    //   <Container>
-    //     <Row>
-    //       {filteredPages.map((page) => (
-    //           <PageInfo
-    //             J={page.id}
-    //             pageData={page}
-    //             deletePage={props.deletePage}
-    //             updatePage={props.updatePage}
-    //             editable={props.editable}
-    //           />
-    //         ))}
-          
-    //     </Row>
-    //     </Container>
-    // );
-  }
-  
-  function PageInfo(props) {
-    const formatDate = (dayJsDate, format) => {
-      return dayJsDate ? dayJsDate.format(format) : "";
-    };
-  
-    // location is used to pass state to the edit (or add) view so that we may be able to come back to the last filter view
-    const location = useLocation();
+  const getBlocks = (blocks) => {
+    if (typeof JSON.parse(blocks) === "string")
+      return JSON.parse(JSON.parse(blocks));
+    return JSON.parse(blocks);
+  };
 
-      return (
-        <Container>
-            <Row>
-              <Col lg={3} onClick={()=> navigate('/DetailPage/:pageId?')}>
-                    <p className="page-title">{props.pageData.title}</p>
-                    <p>Created by: {props.pageData.author}</p>
-                    <p>Created at: {formatDate(props.pageData.creation_date, "MMMM D, YYYY")}</p>
-                    <p>TODO: published/draft/scheduled</p>
+  console.log("page", detail);
+  if (!detail) return "loading ...";
+  return (
+    <Container className="mt-4">
+      <Row>
+        <Col lg={3} onClick={() => {}}>
+          <p className="page-title">{detail.title}</p>
+          <p>Created by: {detail.author}</p>
+          <p>
+            Created at: {dayjs(detail.creation_date).format("MMMM D, YYYY")}
+          </p>
+          <p>Status: {getPublicationStatus(detail.publication_date)}</p>
+          <p>Content:</p>
+          {getBlocks(detail.blocks).map((block) => {
+            console.log("block", block);
+            if (block.type === "HEADER") return <h3>{block.value}</h3>;
+            else if (block.type === "PARAGRAPH")
+              return <pre>{block.value}</pre>;
+            else if (block.type === "IMAGE")
+              return (
+                <img
+                  src={block.value.src}
+                  style={{ width: "100%", height: "100%" }}
+                />
+              );
+          })}
+          <Nav.Link href="#">
+            <Link to={"/admin"} state={{ nextpage: location.pathname }}>
+              <p>Back to all pages</p>
+            </Link>
+          </Nav.Link>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
 
-                    {/* TODO */}
-                    {/* Blocks in the pages */}
-
-
-
-
-                    <Nav.Link href="#">
-                        <Link to={"/admin"} state={{nextpage: location.pathname}}>
-                            <p>Back to all pages</p>
-                        </Link>
-                    </Nav.Link>
-             </Col>
-            </Row>
-        </Container>
-      );
-  }
-
-  export default DetailPage;
+export default DetailPage;

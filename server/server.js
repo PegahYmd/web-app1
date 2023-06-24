@@ -194,7 +194,7 @@ app.post(
       title: req.body.title,
       author: req.body.author,
       publicationDate: req.body.publicationDate,
-      blocks: JSON.stringify(req.body.blocks),
+      blocks: req.body.blocks,
     };
 
     try {
@@ -218,10 +218,6 @@ app.put(
     // check('user').isInt(),
     check("title").isLength({ min: 1, max: 160 }),
     check("author").isLength({ min: 1, max: 160 }),
-    check("publication_date")
-      .isLength({ min: 10, max: 10 })
-      .isISO8601({ strict: true })
-      .optional({ checkFalsy: true }),
   ],
   async (req, res) => {
     // Is there any validation error?
@@ -235,13 +231,8 @@ app.put(
       user: req.body.user,
       title: req.body.title,
       author: req.body.author,
-      creation_date: req.body.creation_date, // A different method is required if also time is present. For instance: (req.body.watchDate || '').split('T')[0]
-      publication_date: req.body.publication_date,
+      publicationDate: req.body.publicationDate,
       blocks: req.body.blocks,
-      header: req.body.header,
-      // header2: req.body.header2,
-      paragraph: req.body.paragraph,
-      image: req.body.image,
     };
 
     try {

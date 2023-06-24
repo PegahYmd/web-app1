@@ -159,7 +159,7 @@ function App() {
                 }
               />
               <Route path="form/:pageId?" element={<PageManagement />} />
-              <Route path="detail" element={<DetailPage />} />
+              <Route path="page/details/:pageId" element={<DetailPage />} />
               <Route path="addit" element={<PageForm />} />
               <Route
                 path="admin"

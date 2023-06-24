@@ -100,6 +100,12 @@ const PageManagement = () => {
     }
   };
 
+  const getBlocks = (blocks) => {
+    if (typeof JSON.parse(blocks) === "string")
+      return JSON.parse(JSON.parse(blocks));
+    return JSON.parse(blocks);
+  };
+
   const onSubmitHandler = () => {
     if (
       // (props.title.value == '') ||
@@ -114,6 +120,7 @@ const PageManagement = () => {
       );
     else {
       setSubmitLoading(true);
+      console.log("publicationDate", publicationDate);
 
       const pageData = {
         title,
@@ -174,7 +181,7 @@ const PageManagement = () => {
           id: page.user,
           name: page.author,
         });
-        setBlocks(JSON.parse(JSON.parse(page.blocks)));
+        setBlocks(getBlocks(page.blocks));
       });
     }
   }, [user, pageId]);
