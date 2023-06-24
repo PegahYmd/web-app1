@@ -229,10 +229,6 @@ app.put(
     if (!errors.isEmpty()) {
       return res.status(422).json({ error: errors.array().join(", ") }); // error message is a single string with all error joined together
     }
-    // Is the id in the body equal to the id in the url?
-    if (req.body.id !== Number(req.params.id)) {
-      return res.status(422).json({ error: "URL and body id mismatch" });
-    }
 
     const page = {
       id: req.body.id,

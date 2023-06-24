@@ -120,7 +120,7 @@ const PageManagement = () => {
         user: author.id,
         author: author.name,
         publicationDate,
-        blocks: JSON.stringify(blocks),
+        blocks: blocks,
       };
 
       if (pageId) {
@@ -319,7 +319,11 @@ const PageManagement = () => {
         );
       })}
 
-      <Button className="submit-form" onClick={onSubmitHandler} disabled={submitLoading}>
+      <Button
+        className="submit-form"
+        onClick={onSubmitHandler}
+        disabled={submitLoading}
+      >
         {submitLoading ? "Please Wait ..." : "Submit"}
       </Button>
     </form>

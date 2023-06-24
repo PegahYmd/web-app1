@@ -158,7 +158,7 @@ function App() {
                   )
                 }
               />
-              <Route path="form" element={<PageManagement />} />
+              <Route path="form/:pageId?" element={<PageManagement />} />
               <Route path="detail" element={<DetailPage />} />
               <Route path="addit" element={<PageForm />} />
               <Route
