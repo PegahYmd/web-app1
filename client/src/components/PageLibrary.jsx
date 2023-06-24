@@ -3,6 +3,7 @@ import "dayjs";
 import { Table, Form, Button, Image, Container, Row, Col } from "react-bootstrap";
 import { Link, useLocation, Navigate } from "react-router-dom";
 import DetailPage from "./DetailPage";
+import dayjs from "dayjs";
 
 
 function PageTable(props) {
@@ -32,6 +33,53 @@ function PageRow(props) {
     return dayJsDate ? dayJsDate.format(format) : "";
   };
 
+  // function publishStatus(){
+    //let publish_Status = props.pageData.publication_date;
+    //let publish_Status = formatDate(props.pageData.publication_date, "MMMM D, YYYY");
+    let publish_Status = props.pageData.publication_date;
+    let today = dayjs();
+    // console.log(today);
+    // console.log(today.$y);
+    // console.log(today.$D);
+    // console.log(today.$M+1);
+    // console.log(publish_Status);
+    // console.log(publish_Status.$y);
+    // console.log(publish_Status.$D);
+    // console.log(publish_Status.$M+1);
+    if(publish_Status == '') {
+      publish_Status = "Draft";
+      // console.log("Draft");
+    }
+    if(publish_Status.$y == today.$y){
+      if(publish_Status.$M+1 == today.$M+1){
+        if(publish_Status.$D == today.$D){
+          // console.log("Day equal");
+          // console.log("Published");
+          publish_Status = "Published";
+        }else if(publish_Status.$D < today.$D){
+          // console.log("Published");
+          publish_Status = "Published";
+        }else if(publish_Status.$D > today.$D){
+          // console.log("Scheduled");
+          publish_Status = "Scheduled";
+        }
+      }else if(publish_Status.$M+1 < today.$M+1){
+        // console.log("Published");
+        publish_Status = "Published";
+      }else if(publish_Status.$M+1 > today.$M+1){
+        // console.log("Scheduled");
+        publish_Status = "Scheduled";
+      }
+
+    }else if(publish_Status.$y < today.$y){
+      // console.log("Published");
+      publish_Status = "Published";
+    }else if(publish_Status.$y > today.$y){
+      // console.log("Scheduled");
+      publish_Status = "Scheduled";
+    }
+  
+
   // location is used to pass state to the edit (or add) view so that we may be able to come back to the last filter view
   const location = useLocation();
 
@@ -40,9 +88,9 @@ function PageRow(props) {
       <Col lg={3} onClick={()=> Navigate('/detail')}>
         <div className="page-boxes">
           <p className="page-title">{props.pageData.title}</p>
-          <p>Created by: {props.pageData.author}</p>
+          <p>Author: {props.pageData.author}</p>
           <p>Created at: {formatDate(props.pageData.creation_date, "MMMM D, YYYY")}</p>
-          <p>TODO: published/draft/scheduled</p>
+          <p>Status: {publish_Status}</p>
           <Row className="btns-area">
             <Col lg={8}></Col>
             <Col lg={4}>
@@ -71,9 +119,9 @@ function PageRow(props) {
       <Col lg={3} onClick={()=> Navigate('/detail')}>
         <div className="page-boxes">
           <p className="page-title">{props.pageData.title}</p>
-          <p>Created by: {props.pageData.author}</p>
+          <p>Author: {props.pageData.author}</p>
           <p>Created at: {formatDate(props.pageData.creation_date, "MMMM D, YYYY")}</p>
-          <p>TODO: published/draft/scheduled</p>
+          <p>Status: {publish_Status}</p>
           <Row className="btns-area">
             <Col lg={8}></Col>
             <Col lg={4}>

@@ -14,7 +14,7 @@ const PageForm = (props) => {
    * There are two possible cases:
    * - if we are creating a new page, the page is initialized with the default values.
    * - if we are editing a page, the page is pre-filled with the previous values.
-   */
+   */ 
 
   const [title, setTitle] = useState(props.page ? props.page.title : "");
   const [author, setAuthor] = useState(props.page ? props.page.author : "");

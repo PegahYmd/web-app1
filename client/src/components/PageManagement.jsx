@@ -102,6 +102,7 @@ const PageManagement = () => {
 
   const onSubmitHandler = () => {
     if (
+      // (props.title.value == '') ||
       !blocks.some((block) => block.type === "HEADER" && block.value) ||
       !blocks.some(
         (block) =>
@@ -109,7 +110,7 @@ const PageManagement = () => {
       )
     )
       alert(
-        "A page must have at least an header and at least one of the other two types of blocks"
+        "A page must have a valid title and header and at least one of the other two types of blocks"
       );
     else {
       setSubmitLoading(true);
