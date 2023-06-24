@@ -42,7 +42,6 @@ const getPages = async () => {
           title: page.title,
           author: page.author,
           header: page.header,
-          header2: page.header2,
           paragraph: page.paragraph,
           creation_date: page.creation_date,
           publication_date: page.publication_date,
@@ -87,7 +86,7 @@ const getPagesFiltered = async (filterId) => {
 };
 
 /**
- * Getting and returing a film, specifying its filmId.
+ * Getting and returing a page, specifying its pageId.
  */
 const getPage = async (pageId) => {
   return getJson(
@@ -96,7 +95,7 @@ const getPage = async (pageId) => {
 };
 
 /**
- * This function wants a film object as parameter. If the filmId exists, it updates the film in the server side.
+ * This function wants a page object as parameter. If the pageId exists, it updates the page in the server side.
  */
 function updatePage(page) {
   return getJson(
@@ -112,7 +111,7 @@ function updatePage(page) {
 }
 
 /**
- * This funciton adds a new film in the back-end library.
+ * This funciton adds a new page in the back-end library.
  */
 function addPage(page) {
   return getJson(
@@ -128,7 +127,7 @@ function addPage(page) {
 }
 
 /**
- * This function deletes a film from the back-end library.
+ * This function deletes a page from the back-end library.
  */
 function deletePage(pageId) {
   return getJson(
@@ -182,6 +181,34 @@ const logOut = async () => {
   );
 };
 
+
+function addTitle(page) {
+  return getJson(
+    fetch(SERVER_URL + "pages/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(page),
+    })
+  );
+}
+
+function editTitle(page) {
+  return getJson(
+    fetch(SERVER_URL + "pages/" + page.id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(page),
+    })
+  );
+}
+
+
 const API = {
   getPages,
   getPagesFiltered,
@@ -193,5 +220,7 @@ const API = {
   getUserInfo,
   getUsersList,
   logOut,
+  addTitle,
+  editTitle,
 };
 export default API;
