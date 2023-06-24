@@ -120,7 +120,7 @@ const PageManagement = () => {
         user: author.id,
         author: author.name,
         publicationDate,
-        blocks: blocks,
+        blocks: JSON.stringify(blocks),
       };
 
       if (pageId) {
@@ -174,7 +174,7 @@ const PageManagement = () => {
           id: page.user,
           name: page.author,
         });
-        setBlocks(JSON.parse(page.blocks));
+        setBlocks(JSON.parse(JSON.parse(page.blocks)));
       });
     }
   }, [user, pageId]);
