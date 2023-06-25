@@ -1,12 +1,4 @@
-import {
-  Button,
-  Col,
-  Form,
-  Image,
-  InputGroup,
-  NavDropdown,
-  Row,
-} from "react-bootstrap";
+import { Button, Form, Image, NavDropdown, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 import Image1 from "./../images/1.jpg";
@@ -120,7 +112,6 @@ const PageManagement = () => {
       );
     else {
       setSubmitLoading(true);
-      console.log("publicationDate", publicationDate);
 
       const pageData = {
         title,
@@ -192,7 +183,7 @@ const PageManagement = () => {
   if (userInquiryError) return navigate("/");
 
   return (
-    <form className="container mt-5 mb-3">
+    <form className="container mb-3">
       <Row className="mb-5">
         <Form.Group className="col col-sm-4">
           <Form.Label>Title</Form.Label>

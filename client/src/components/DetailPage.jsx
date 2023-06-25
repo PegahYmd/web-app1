@@ -49,7 +49,7 @@ function DetailPage() {
               );
           })}
           <Nav.Link href="#">
-            <Link to={"/admin"} state={{ nextpage: location.pathname }}>
+            <Link to={"/"} state={{ nextpage: location.pathname }}>
               <p>Back to all pages</p>
             </Link>
           </Nav.Link>

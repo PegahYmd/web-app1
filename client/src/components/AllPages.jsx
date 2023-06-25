@@ -46,6 +46,14 @@ function AllPages() {
   if (error) return <p>Error ...</p>;
   return (
     <Container fluid style={{ marginTop: "7rem" }}>
+      {user && (
+        <Button
+          style={{ marginBottom: "1rem" }}
+          onClick={() => navigate("/form")}
+        >
+          Create New Page
+        </Button>
+      )}
       <Row>
         {pages.map((page) => (
           <>
